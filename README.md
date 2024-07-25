@@ -36,6 +36,10 @@ Ocmod files will be searched for in the following directory structure: ```extens
 Install `Ces OCMOD`
 7. Configure the module status or other settings as per needed 
 
+![image](https://github.com/user-attachments/assets/e05849cb-9304-483f-a157-532a4fb148b4)
+![image](https://github.com/user-attachments/assets/9cf3fcdd-f765-48f0-8e2b-3a00bad7c201)
+![image](https://github.com/user-attachments/assets/200c93ea-feab-4ad1-8e56-33aa6e390e58)
+
 ## Bundle
 
 ```sh
