@@ -1,0 +1,37 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-modification" formaction="{{ save_and_refresh_modification_url }}" data-bs-toggle="tooltip" title="{{ text_save_and_refresh_modification }}" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> + <i class="fa-solid fa-rotate"></i></button>
+        <button type="submit" form="form-modification" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+	    <form id="form-modification" action="{{ save }}" method="post" data-oc-toggle="ajax">
+	    	<textarea name="xml" id="input-editor-textarea" style="display: none; width: 100%; "></textarea>
+	    	<div id="input-editor"></div>
+	    	<input type="hidden" name="modification_id" value="{{ modification_id }}" />
+	    </form>
+    </div>
+  </div>
+</div>
+
+<script>
+	const xml = `{{ xml }}`;
+
+	window.myCodeMirror = new CodeMirror('#input-editor', {
+		indent_size: 8,
+		updateElementId: '#input-editor-textarea',
+		initXmlValue: xml
+	})
+</script>
+{{ footer }}

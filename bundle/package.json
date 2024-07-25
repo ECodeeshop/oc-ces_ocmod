@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@codemirror/lang-xml": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "codemirror": "^6.0.1",
+    "rollup": "^4.18.1"
+  }
+}

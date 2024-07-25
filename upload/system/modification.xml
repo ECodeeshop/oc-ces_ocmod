@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>Modification Default</name>
+  <code>default</code>
+  <version>1.1</version>
+  <author>CodeEshop</author>
+  <link>https://codeeshop.com</link>
+
+  <file path="system/{engine,library}/{action,loader,config}*.php|system/library/language.php">
+    <operation error="skip">
+      <search>
+        <![CDATA[if (is_file($file)) {]]>
+      </search>
+      <add position="after">
+        <![CDATA[$file = modification($file);]]>
+      </add>
+    </operation>
+  </file>
+  <file path="system/library/template/template.php">
+    <operation error="skip">
+      <search>
+        <![CDATA[if (isset($file) && is_file($file)) {]]>
+      </search>
+      <add position="after">
+        <![CDATA[$file = modification($file);]]>
+      </add>
+    </operation>
+  </file>
+  <file path="system/library/template/twig.php">
+    <operation>
+      <search>
+        <![CDATA[$file = $this->directory . $filename . '.twig';]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+          $file = modification($file, '');
+        ]]>
+      </add>
+    </operation>
+  </file>
+</modification>
