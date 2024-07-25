@@ -40,6 +40,22 @@ Install `Ces OCMOD`
 ![image](https://github.com/user-attachments/assets/9cf3fcdd-f765-48f0-8e2b-3a00bad7c201)
 ![image](https://github.com/user-attachments/assets/200c93ea-feab-4ad1-8e56-33aa6e390e58)
 
+
+## Upload modules ocmod files
+> For admin
+1. Create a `index.xml` file
+2. Zip `index.xml` and name it as `upload.ocmod.xml`
+3. Upload Zip File in `Ces OCMOD > Installer`
+4. Refresh Modifications in `Ces OCMOD > Modifications`
+
+> For developers
+> 
+```
+/opt/lampp/htdocs/oc/4023/extension/____MODULE_NAME____/system/install.ocmod.xml
+```
+You can add multiple ocmod files (with a `.ocmod.xml` extension) to modify your OpenCart store.
+Ocmod files will be searched for in the following directory structure: `extension folder > module name > system folder > *.ocmod.xml`
+
 ## Bundle
 
 ```sh
