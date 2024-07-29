@@ -70,6 +70,6 @@ npm install
 rollup -c
 ```
 
-Replace Bundle generated <code>editor.bundle.js</code> file with [old file](./4.x.x.x/admin/view/javascript/)
+Replace Bundle generated <code>editor.bundle.js</code> file with [old file](./upload/admin/view/javascript/)
 
 Extension is free for use.
