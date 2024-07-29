@@ -173,7 +173,7 @@ class CesOcmod extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function installEvents()
+	public function installEvents(): void
 	{
 
 		$this->load->model('setting/event');
@@ -191,7 +191,7 @@ class CesOcmod extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		}
 	}
 
-	public function uninstallEvents()
+	public function uninstallEvents(): void
 	{
 		$this->load->model('setting/event');
 

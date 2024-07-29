@@ -8,7 +8,7 @@ trait cesOcmodLib {
 	protected $eName      = 'module_ces_ocmod';
     protected $ePath      = 'extension/ces_ocmod/module/ces_ocmod';
     protected $ePathEvent = 'extension/ces_ocmod/event';
-    protected $eVersion   = '1.0.0';
+    protected $eVersion   = '1.1.0';
     protected $separator   = '.';
 
     protected $ePathMarketplace = 'extension/ces_ocmod/marketplace';

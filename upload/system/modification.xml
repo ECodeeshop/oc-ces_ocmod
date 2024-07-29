@@ -37,5 +37,29 @@
         ]]>
       </add>
     </operation>
+    <operation>
+      <search>
+        <![CDATA[$file = substr($file, strlen($this->root) + 1);]]>
+      </search>
+      <add position="before">
+        <![CDATA[
+          if (strpos($file, DIR_STORAGE) === false) {
+            $this->loader = new \Twig\Loader\FilesystemLoader('/', $this->root);
+        ]]>
+      </add>
+    </operation>
+    <operation>
+      <search>
+        <![CDATA[$file = substr($file, strlen($this->root) + 1);]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+          } else {
+            $this->loader = new \Twig\Loader\FilesystemLoader('/', DIR_STORAGE);
+            $file = substr($file, strlen(DIR_STORAGE));
+          }
+        ]]>
+      </add>
+    </operation>
   </file>
 </modification>

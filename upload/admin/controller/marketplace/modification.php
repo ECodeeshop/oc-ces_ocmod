@@ -1,4 +1,5 @@
 <?php
+
 namespace Opencart\Admin\Controller\Extension\CesOcmod\Marketplace;
 
 if (defined('DIR_EXTENSION')) {
@@ -22,7 +23,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return void
 	 */
-	public function commonMethod(): void {
+	public function commonMethod(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->load->model($this->ePathModificationModel);
@@ -73,7 +75,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return void
 	 */
-	public function index(): void {
+	public function index(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -84,13 +87,15 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return void
 	 */
-	public function list(): void {
+	public function list(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->response->setOutput($this->getList());
 	}
 
-	public function delete(): void {
+	public function delete(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$json = [];
@@ -119,7 +124,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function refresh($data = array()) {
+	public function refresh($data = array())
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -155,7 +161,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->commonMethod();
 	}
 
-	public function clear() {
+	public function clear()
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -193,7 +200,7 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 					if (is_file($file)) {
 						unlink($file);
 
-					// If directory use the remove directory function
+						// If directory use the remove directory function
 					} elseif (is_dir($file)) {
 						rmdir($file);
 					}
@@ -222,7 +229,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->commonMethod();
 	}
 
-	public function enable() {
+	public function enable()
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -254,7 +262,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->commonMethod();
 	}
 
-	public function disable() {
+	public function disable()
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -286,7 +295,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->commonMethod();
 	}
 
-	public function clearlog() {
+	public function clearlog()
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -323,7 +333,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return string
 	 */
-	protected function getList(): string {
+	protected function getList(): string
+	{
 		if (isset($this->request->get['sort'])) {
 			$sort = (string)$this->request->get['sort'];
 		} else {
@@ -459,7 +470,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		return $this->load->view($this->ePathModification . '_list', $data);
 	}
 
-	protected function validate() {
+	protected function validate()
+	{
 		if (!$this->user->hasPermission('modify', $this->ePathModification)) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
@@ -470,7 +482,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return void
 	 */
-	public function form(): void {
+	public function form(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -543,7 +556,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 	/**
 	 * @return void
 	 */
-	public function save(): void {
+	public function save(): void
+	{
 		$this->load->language($this->ePathModification);
 
 		$json = $data = [];
@@ -578,14 +592,14 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 
 				$this->model_extension_ces_ocmod_setting_modification->editModification($modification_id, $data);
 			} else {
-                if (!empty($data['code'])) {
-                    // Check to see if the modification is already installed or not.
-                    $modification_info = $this->model_extension_ces_ocmod_setting_modification->getModificationByCode($data['code']);
+				if (!empty($data['code'])) {
+					// Check to see if the modification is already installed or not.
+					$modification_info = $this->model_extension_ces_ocmod_setting_modification->getModificationByCode($data['code']);
 
-                    if ($modification_info) {
-                        $this->model_extension_ces_ocmod_setting_modification->deleteModification($modification_info['modification_id']);
-                    }
-                }
+					if ($modification_info) {
+						$this->model_extension_ces_ocmod_setting_modification->deleteModification($modification_info['modification_id']);
+					}
+				}
 
 				// hardcoded
 				$data['extension_install_id'] = 0;
@@ -604,7 +618,8 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$this->response->setOutput(json_encode($json));
 	}
 
-	private function saveData($data) {
+	private function saveData($data)
+	{
 		// Just before files are deleted, if config settings say maintenance mode is off then turn it on
 		$maintenance = $this->config->get('config_maintenance');
 
@@ -646,7 +661,7 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 				if (is_file($file)) {
 					unlink($file);
 
-				// If directory use the remove directory function
+					// If directory use the remove directory function
 				} elseif (is_dir($file)) {
 					rmdir($file);
 				}
@@ -685,7 +700,7 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		$modification = array();
 
 		foreach ($xml as $xml) {
-			if (empty($xml)){
+			if (empty($xml)) {
 				continue;
 			}
 
@@ -754,11 +769,9 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 
 									// Log
 									$log[] = PHP_EOL . 'FILE: ' . $key;
-
 								} else {
 									// Log
 									$log[] = PHP_EOL . 'FILE: (sub modification) ' . $key;
-
 								}
 
 								foreach ($operations as $operation) {
@@ -932,7 +945,7 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 										else {
 											// Log
 											$log[] = 'NOT FOUND - OPERATIONS ABORTED!';
-										 	break;
+											break;
 										}
 									}
 								}
@@ -980,5 +993,12 @@ class Modification extends \Opencart\System\Engine\Extension\CesOcmod\Controller
 		// Do not return success message if refresh() was called with $data
 		$this->session->data['success'] = $this->language->get('text_success');
 
+		// when admin folder is changed from default admin to different
+		rename(DIR_MODIFICATION . 'admin/', DIR_MODIFICATION . $this->adminFolderName());
+	}
+
+	private function adminFolderName()
+	{
+		return str_replace([DIR_OPENCART, '/'], '', DIR_APPLICATION);
 	}
 }
